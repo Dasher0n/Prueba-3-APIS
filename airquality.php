@@ -4,9 +4,9 @@ $data = json_decode(file_get_contents("php://input"), true);
 
 $lat = $data["location"]["latitude"];
 $lng = $data["location"]["longitude"];
-$apiKey = "AIzaSyCv3pC0wjVCsaDaNcoD04fEAEYNDpYVs-c"; // Reemplaza con tu clave de API
+$apiKey = "APIKEYPRIVADA"; // APIkey de Google
 
-// Datos para la solicitud
+// Datos para la solicitud (POST)
 $requestData = [
     "universalAqi" => true,
     "location" => [
