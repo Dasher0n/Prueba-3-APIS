@@ -2,7 +2,7 @@
 // Obtener los parámetros para usar en la URL
 $lat = $_GET["lat"];
 $lng = $_GET["lng"];
-$apiKey = "AIzaSyCv3pC0wjVCsaDaNcoD04fEAEYNDpYVs-c"; // API key de Google
+$apiKey = "APIKEYPRIVADA"; // API key de Google
 
 // URL para consumir el API
 $url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=$lat,$lng&key=$apiKey";
