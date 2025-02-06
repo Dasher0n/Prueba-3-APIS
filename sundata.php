@@ -2,7 +2,7 @@
 // Obtener los parámetros de la URL
 $latSOL = $_GET["latSOL"];
 $lngSOL = $_GET["lngSOL"];
-$apiKey = "AIzaSyCv3pC0wjVCsaDaNcoD04fEAEYNDpYVs-c"; // APIkey de Google
+$apiKey = "APIKEYPRIVADA"; // APIkey de Google
 
 // URL para consumir el API
 $url = "https://solar.googleapis.com/v1/dataLayers:get?location.latitude=$latSOL&location.longitude=$lngSOL&radiusMeters=100&view=FULL_LAYERS&requiredQuality=HIGH&exactQualityRequired=true&pixelSizeMeters=0.5&key=$apiKey";
