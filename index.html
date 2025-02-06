@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Prueba de 3 APIS</title>
+</head>
+<body>
+
+    <h2>API de Goecodificación inversa</h2>
+    <input type="text" id="lat" placeholder="Latitud">
+    <input type="text" id="lng" placeholder="Longitud">
+    <button onclick="fetchAddress()">Obtener Dirección</button>
+    <p id="address"></p>
+
+    <script>
+        function fetchAddress() {
+            const lat = document.getElementById("lat").value;
+            const lng = document.getElementById("lng").value;
+            
+            fetch("geocode.php?lat=" + lat + "&lng=" + lng)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("address").textContent = data.address;
+                });
+        }
+    </script>
+
+    <h2>Consultar Calidad del Aire por Coordenadas</h2>
+    <input type="text" id="latitude" placeholder="Latitud">
+    <input type="text" id="longitude" placeholder="Longitud">
+    <button onclick="fetchAirQuality()">Obtener Calidad del Aire</button>
+    <div id="result"></div>
+
+    <script>
+        function fetchAirQuality() {
+            const latitude = document.getElementById("latitude").value;
+            const longitude = document.getElementById("longitude").value;
+
+            fetch('airquality.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    universalAqi: true,
+                    location: {
+                        latitude: parseFloat(latitude),
+                        longitude: parseFloat(longitude)
+                    }
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").textContent = JSON.stringify(data);
+            });
+        }
+    </script>
+
+    <h2>Consultar Capas de Datos de Solar por Coordenadas</h2>
+    <input type="text" id="latSOL" placeholder="Latitud">
+    <input type="text" id="lngSOL" placeholder="Longitud">
+    <button onclick="fetchDataLayer()">Obtener Capa de Datos</button>
+    <div id="resultSOL"></div>
+
+    <script>
+        function fetchDataLayer() {
+            const latSOL = document.getElementById("latSOL").value;
+            const lngSOL = document.getElementById("lngSOL").value;
+
+            fetch("sundata.php?latSOL=" + latSOL + "&lngSOL=" + lngSOL)
+                .then(response => response.json())
+                .then(result => {
+                    document.getElementById("resultSOL").textContent = JSON.stringify(result);
+                });
+        }
+    </script>
+</body>
+</html>
